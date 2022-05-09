@@ -1,4 +1,4 @@
-const { World, Student } = require('../models');
+const { World, User } = require('../models');
 
 module.exports = {
   // Get all worlds
@@ -33,9 +33,9 @@ module.exports = {
       .then((world) =>
         !world
           ? res.status(404).json({ message: 'No world with that ID' })
-          : Student.deleteMany({ _id: { $in: world.students } })
+          : User.deleteMany({ _id: { $in: world.users } })
       )
-      .then(() => res.json({ message: 'World and students deleted!' }))
+      .then(() => res.json({ message: 'World and users deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
   // Update a world
