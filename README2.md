@@ -32,3 +32,17 @@ SO THAT my website can handle large amounts of unstructured data
 - When a user tests API POST, PUT, and DELETE routes in Insomnia they successfully  create, update, and delete users and thoughts in their database
 - When a user tests API POST and DELETE routes in Insomnia they successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list.
 
+## Application
+
+### Walkthrough Video
+[Link to Walkthrough Video](https://drive.google.com/file/d/1QC1rsKepKP1jt3bql2CjfT-k3llvJ02a/view)
+
+### Github Repository 
+[Link to Github Repository](https://github.com/LisaCR01/Social-Network-API.git)
+https://github.com/LisaCR01/Social-Network-API.git
+
+
+## Contact Information
+* [Email](mailto:lcrgunn@gmail.com)
+* [Github](https://github.com/LisaCR01)
+* [LinkedIn](https://www.linkedin.com/in/LisaCR01)
