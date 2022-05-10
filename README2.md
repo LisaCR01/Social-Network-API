@@ -2,6 +2,8 @@
 
 In this project I built an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. My motivation behind this application is exploring the use of MongoDB; as its a popular NoSQL database program used by many social networks. 
 
+The sections of the code that add a friend, thought and reaction are written in skeleton but I have not managed to make them work.
+
 ## Technologies
 
 * JavaScript
