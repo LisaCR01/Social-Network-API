@@ -5,7 +5,7 @@ const {
   createWorld,
   updateWorld,
   deleteWorld,
-} = require('../../controllers/worldController.js');
+} = require('../../controllers/worldControllers.js');
 
 // /api/worlds
 router.route('/').get(getWorlds).post(createWorld);

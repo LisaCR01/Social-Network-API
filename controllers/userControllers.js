@@ -1,12 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, World } = require('../models');
 
-// Aggregate function to get the number of users overall
-const headCount = async () =>
-  User.aggregate()
-    .count('userCount')
-    .then((numberOfUsers) => numberOfUsers);
-
 module.exports = {
   // Get all users
   getUsers(req, res) {
@@ -69,39 +63,16 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-
-  // Add an thought to a user
-  addThought(req, res) {
-    console.log('You are adding an thought');
-    console.log(req.body);
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $addToSet: { thoughts: req.body } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-  // Remove thought from a user
-  removeThought(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { thought: { thoughtId: req.params.thoughtId } } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
+  // Update a current User by ID
+  updateUsers({params, body}, res) {
+  Users.findOneAndUpdate({_id: params.id}, body, {new: true, runValidators: true})
+  .then(dbUsersData => {
+  if(!dbUsersData) {
+  res.status(404).json({message: 'No User with this particular ID!'});
+  return;
+  }
+  res.json(dbUserData);
+  })
+   .catch(err => res.json(err))
+},
 };

@@ -9,7 +9,7 @@ const {
     createReaction,
     removeReaction
  
- } = require('../../controllers/thoughtController.js');
+ } = require('../../controllers/thoughtControllers.js');
 
 // -- Directs to: /api/thoughts/:userId <POST>
 router.route('/:userId').post(createThought);
