@@ -1,5 +1,34 @@
 const { Schema, Types } = require('mongoose');
 
+const reactionSchema = new Schema(
+    {
+      reactionId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
+      },
+      reactionBody: {
+        type: String,
+        required: "Please enter a reaction between 1 and 100 characters long!",
+        minLength: 1,
+        maxLength: 100,
+      },
+      username: {
+        type: String,
+        required: "Please enter your Username!",
+      },
+      createdAt: {
+        type: Date,
+        default: moment().format('DD-MM-YYYYTHH:mm:ss'),
+      },
+    },
+    {
+      toJSON: {
+        getters: true,
+      },
+      id: false,
+    }
+  );
+
 const thoughtSchema = new Schema(
   {
     thoughtId: {
@@ -10,18 +39,14 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
       maxlength: 50,
-      minlength: 4,
+      minlength:2,
       default: 'Unnamed thought',
-    },
-    score: {
-      type: Number,
-      required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
     },
     createdAt: {
       type: Date,
       default: Date.now,
     },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -31,4 +56,6 @@ const thoughtSchema = new Schema(
   }
 );
 
-module.exports = thoughtSchema;
+const Thoughts = model("Thoughts", thoughtSchema);
+
+module.exports = { Thoughts };
